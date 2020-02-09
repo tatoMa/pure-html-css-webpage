@@ -74,6 +74,9 @@ nav .menu .menu-item::after{
 nav .menu .menu-item:hover::after{
     width: 52px;
 }
+nav .menu-button{
+    display: none;
+}
 main{
     display: flex;
     justify-content: space-between;
@@ -84,6 +87,7 @@ main .info{
     flex-direction: column;
     justify-content: center;
     max-width: 700px;
+    min-width: 350px;
     margin-right: 56px;
 }
 main .info h1{
@@ -111,7 +115,8 @@ main .info a:hover{
     background: var(--primary-color);
 }
 main .img img{
-    width: 600px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 footer{
@@ -197,4 +202,74 @@ footer .footer-copyright p{
     font-weight: 300;
     color: #555;
     font-size: .9rem;
+}
+.display{
+    opacity: 1 !important;
+    pointer-events: initial !important;
+}
+@media (max-width: 992px){
+    body{
+        margin: 0 20px;
+    }
+}
+@media (max-width: 768px){
+    body{
+        margin: 0 12px;
+    }
+    body:after{
+        display: none;
+    }
+    nav .menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: .5s;
+    }
+    nav .menu .menu-item{
+        padding: 24px 24px;
+        font-size: 2rem;
+        color: #fff;
+    }
+    nav .menu .menu-item:hover::after{
+        width: 100%;
+    }
+    main{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 32px;
+    }
+    main .info h1{
+        margin-top: 24px;
+        font-size: 2rem;
+    }
+    main .info p{
+        margin-top: 12px;
+    }
+    footer .footer-copyright{
+        position: initial;
+    }
+    nav .menu-button{
+        display: initial;
+        width: 40px;
+        height: 40px;
+        margin-right: 24px;
+        background: url(img/menu.png);
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+    nav .menu-button.active{
+        filter: invert(1);
+        z-index: 11;
+    } 
 }

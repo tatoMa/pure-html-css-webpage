@@ -10,12 +10,13 @@
 <body>
     <nav>
         <div class="logo">Health<span>Food</span></div>
-        <ul class="menu">
+        <ul class="menu" id="menu">
             <li class="menu-item active">Home</li>
             <li class="menu-item">Blog</li>
             <li class="menu-item">About</li>
             <li class="menu-item">Contact</li>
         </ul>
+        <div class="menu-button" id="menu-button" onclick="menuToggle()"></div>
     </nav>
     <main>
         <div class="info active">
@@ -44,4 +45,12 @@
         </div>
     </footer>
 </body>
+<script>
+    function menuToggle(){
+        let menu = document.getElementById("menu");
+        menu.classList.toggle("display");
+        let menuButton = document.getElementById("menu-button");
+        menuButton.classList.toggle("active");
+    }
+</script>
 </html>
