@@ -22,7 +22,8 @@ body:after{
     top:0;
     right:-80px;
     width: 324px;
-    height: 100vh;
+    min-height: 100vh;
+    height:100%;
     background: #333333;
     z-index: -10;
 }
@@ -89,6 +90,7 @@ main .info{
     max-width: 700px;
     min-width: 350px;
     margin-right: 56px;
+    flex: 2;
 }
 main .info h1{
     font-size: 3.2rem;
@@ -112,7 +114,10 @@ main .info a{
 }
 main .info a:hover{
     color: #fff;
-    background: var(--primary-color);
+    background: var(--secondary-color);
+}
+main .img{
+    flex:3;
 }
 main .img img{
     width: 100%;
@@ -122,6 +127,8 @@ main .img img{
 footer{
     display: flex;
     flex-direction: column;
+    position: relative;
+
 }
 footer .footer-icons{
     display: flex;
@@ -132,12 +139,12 @@ footer:after{
     content: 'Healthy';
     font-size: 14rem;
     font-weight: bold;
-    color: rgba(100, 100, 100, 0.15);
+    color: rgba(100, 100, 100, 0.08);
     position: absolute;
-    bottom: 130px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 140px;
+    transform: translateY(10%);
     pointer-events: none;
 }
 footer .footer-icons .social-network{
@@ -152,21 +159,38 @@ footer .footer-icons .social-network li{
 }
 footer .footer-icons .social-network li:hover{
     filter: opacity(1);
+    transform: scale(1.1);
     position: relative;
+}
+footer .footer-icons .social-network li::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: .3s ease-in-out;
+    transform-origin: left;
+    transform: scaleX(0)
+}
+footer .footer-icons .social-network li:hover::before{
+    transform: scaleX(1);
 }
 footer .footer-icons .social-network li::after{
     position: absolute;
     content: '';
-    bottom: 3px;
+    bottom: 8px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 3px;
     background: var(--secondary-color);
-    transition: .5s ease-in-out;
+    transition: .3s ease-in-out;
+    transform-origin: right;
+    transform: scaleX(0)
 }
 footer .footer-icons .social-network li:hover::after{
-    width: 100%;
-
+    transform: scaleX(1);
 }
 footer .footer-icons .social-network li img{
     width: 48px;
@@ -189,11 +213,11 @@ footer .footer-icons .page-controller li img:hover{
     filter: invert(1);
 }
 footer .footer-copyright{
-    position: absolute;
+    /* position: absolute;
     bottom: 30px;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 30px; */
     display: flex;
     justify-content: center;
 }
